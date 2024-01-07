@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.css"
@@ -17,44 +17,147 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="./assets/css/style.css" />    
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Weather Dashboard</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-
+      <div class="jumbotron jumbotron-fluid p-4">
+        <div class="container text-center">
+          <h1 class="display-4">Weather Dashboard</h1>
+        </div>
+      </div>
     </header>
-    <main>
 
+    <main class="container-fluid">
+      <div class="row">
+        <section class="col-12 col-md-4 col-lg-3 col-xl-2 mb-4">
+          <div class="card">
+            <div class="card-body pb-0">
+              <h4 class="card-title">Search for a city</h4>
+            </div>
+            <div class="card-body pt-0 custom-block">
+              <input
+                id="city-name"
+                type="text"
+                class="my-2 input btn-block"
+                placeholder="Redwood City"
+              />
+              <button
+                for="city-name"
+                id="city-name-btn"
+                href="#"
+                class="btn btn-primary btn-block"
+              >
+                Search
+              </button>
+            </div>
+            <div class="card-body">
+              <button
+                href="#"
+                class="btn btn-secondary btn-block"
+                data-city="San Diego"
+              >
+                San Diego
+              </button>
+              <button
+                href="#"
+                class="btn btn-secondary btn-block"
+                data-city="Charlotte"
+              >
+                Charlotte
+              </button>
+              <button
+                href="#"
+                class="btn btn-secondary btn-block"
+                data-city="London"
+              >
+                London
+              </button>
+              <button
+                href="#"
+                class="btn btn-secondary btn-block"
+                data-city="Buffalo"
+              >
+                Buffalo
+              </button>
+            </div>
+          </div>
+        </section>
+        <section class="col-12 col-md-8 col-lg-9 col-xl-10">
+          <div class="col">
+            <div class="border rounded p-3">
+              <div>
+                <h2 class="card-title">London (1/6/2024)</h2>
+                <p>Temp: 45</p>
+                <p>Wind: 15mph</p>
+                <p>Humidity: 45</p>
+              </div>
+            </div>
+            <div>
+              <h3 class="mt-4">5-day Forecast</h3>
+            </div>
+            <div class="row align-items-center mb-4">
+              <div class="col-11.5 col-md-4 col-xl m-3 border rounded">
+                <h5 class="pt-2">12/28/2024</h5>
+                <p>Temp: 45</p>
+                <p>Wind: 15mph</p>
+                <p>Humidity: 45</p>
+              </div>
+              <div class="col-11.5 col-md-4 col-xl m-3 border rounded">
+                <h5 class="pt-2">12/29/2024</h5>
+                <p>Temp: 45</p>
+                <p>Wind: 15mph</p>
+                <p>Humidity: 45</p>
+              </div>
+              <div class="col-11.5 col-md-4 col-xl m-3 border rounded">
+                <h5 class="pt-2">12/30/2024</h5>
+                <p>Temp: 45</p>
+                <p>Wind: 15mph</p>
+                <p>Humidity: 45</p>
+              </div>
+              <div class="col-11.5 col-md-4 col-xl m-3 border rounded">
+                <h5 class="pt-2">12/31/2024</h5>
+                <p>Temp: 45</p>
+                <p>Wind: 15mph</p>
+                <p>Humidity: 45</p>
+              </div>
+              <div class="col-11.5 col-md-4 col-xl m-3 border rounded">
+                <h5 class=" pt-2">1/1/25</h5>
+                <p>Temp: 45</p>
+                <p>Wind: 15mph</p>
+                <p>Humidity: 45</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
-    <footer>
+  </body>
 
-    </footer>
-</body>
-
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-crossorigin="anonymous"
-referrerpolicy="no-referrer"
-></script>
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
-integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg=="
-crossorigin="anonymous"
-referrerpolicy="no-referrer"
-></script>
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
-integrity="sha512-I5TkutApDjnWuX+smLIPZNhw+LhTd8WrQhdCKsxCFRSvhFx2km8ZfEpNIhF9nq04msHhOkE8BMOBj5QE07yhMA=="
-crossorigin="anonymous"
-referrerpolicy="no-referrer"
-></script>
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"
-integrity="sha512-zGO3p/zHGECEORxiayBZFvTdX1h6TZXA8MiqEmslNOFsp62E6r4GqnUGSpQU/NH9BFvZVo4cLXRcZEeaJas4bQ=="
-crossorigin="anonymous"
-referrerpolicy="no-referrer"
-></script>
-<script src="./assets/js/index.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+    integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha512-I5TkutApDjnWuX+smLIPZNhw+LhTd8WrQhdCKsxCFRSvhFx2km8ZfEpNIhF9nq04msHhOkE8BMOBj5QE07yhMA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"
+    integrity="sha512-zGO3p/zHGECEORxiayBZFvTdX1h6TZXA8MiqEmslNOFsp62E6r4GqnUGSpQU/NH9BFvZVo4cLXRcZEeaJas4bQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="./assets/js/index.js"></script>
 </html>
