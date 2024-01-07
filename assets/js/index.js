@@ -1,19 +1,39 @@
-var apiKey = "d3a388cc2e0c9271a4d6036eef79b90b";
-var cityName = "Redwood+City";
+var apiKey = 'd3a388cc2e0c9271a4d6036eef79b90b';
+var cityName = 'Redwood City';
+var cityProperty = cityName.replace(' ', '+');
 
-function updateCurrent(data) {
-    console.log(data);
+function updateCurrent(currentData) {
+    var curDate = moment().format('M/D/YYYY');
+    var curTemp = Math.round(currentData.main.temp);
+    var curWind = Math.round(currentData.wind.speed);
+    var curHumidity = currentData.main.humidity;
+    var iconUrl = 'https://openweathermap.org/img/wn/';
+    var icon = currentData.weather[0].icon;
+    
+    console.log(currentData);
+
+    curCityEl = $('#current-city-name');
+    curCityEl.text(`${cityName} (${curDate})`);
+    
+    imageEl = $('<img>');
+    iconUrl += `${icon}@2x.png`
+    imageEl.attr('src', iconUrl);
+
+    curCityEl.append(imageEl);
+    $('#current-temp').text(`Temp: ${curTemp}°`)
+    $('#current-wind').text(`Wind: ${curWind} mph`)
+    $('#current-humidity').text(`Humidity: ${curHumidity}%`)
 }
 
-function updateForecast(data) {
-    console.log(data);
+function updateForecast(forecastData) {
+    console.log(forecastData);
 }
 
-function getForecastApi(data) {
-  updateCurrent(data);
-  var long = data.coord.lon;
-  var lat = data.coord.lat;
-  var forecastApi = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${apiKey}`;
+function getForecastApi(currentData) {
+  updateCurrent(currentData);
+  var long = currentData.coord.lon;
+  var lat = currentData.coord.lat;
+  var forecastApi = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=imperial&appid=${apiKey}`;
   fetch(forecastApi)
     .then(function (response) {
       return response.json();
@@ -22,7 +42,7 @@ function getForecastApi(data) {
 }
 
 function getApi() {
-  var currentApi = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
+  var currentApi = `http://api.openweathermap.org/data/2.5/weather?q=${cityProperty}&units=imperial&appid=${apiKey}`;
 
   fetch(currentApi)
     .then(function (response) {
