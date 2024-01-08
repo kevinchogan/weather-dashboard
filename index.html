@@ -97,38 +97,54 @@
             <div>
               <h3 class="mt-4">5-day Forecast</h3>
             </div>
-            <div class="row align-items-center mb-4">
-              <div class="col-11.5 col-md-4 col-xl my-3 ml-3 mr-1 border rounded" id="slot1">
+            <div class="row align-items-center container-fluid mb-4">
+                <!-- -11.5 col-md-4 col-xl -->
+              <div
+                class="col m-1 border rounded"
+                id="slot1"
+              >              
                 <h5 class="pt-2" id="h5Slot1">12/28/2024</h5>
-                <img src="" id="imgSlot1">
+                <img src="" id="imgSlot1" />
                 <p id="p1Slot1">Temp:</p>
                 <p id="p2Slot1">Wind:</p>
                 <p id="p3Slot1">Humidity:</p>
               </div>
-              <div class="col-11.5 col-md-4 col-xl my-3 mx-1 border rounded" id="slot2">
+              <div
+                class="col m-1 border rounded"
+                id="slot2"
+              >
                 <h5 class="pt-2" id="h5Slot2">12/29/2024</h5>
-                <img src="" id="imgSlot2">
+                <img src="" id="imgSlot2" />
                 <p id="p1Slot2">Temp:</p>
                 <p id="p2Slot2">Wind:</p>
                 <p id="p3Slot2">Humidity:</p>
               </div>
-              <div class="col-11.5 col-md-4 col-xl my-3 mx-1 border rounded" id="slot3">
+              <div
+                class="col m-1 border rounded"
+                id="slot3"
+              >
                 <h5 class="pt-2" id="h5Slot3">12/30/2024</h5>
-                <img src="" id="imgSlot3">
+                <img src="" id="imgSlot3" />
                 <p id="p1Slot3">Temp:</p>
                 <p id="p2Slot3">Wind:</p>
                 <p id="p3Slot3">Humidity:</p>
               </div>
-              <div class="col-11.5 col-md-4 col-xl my-3 mx-1 border rounded" id="slot4">
+              <div
+                class="col m-1 border rounded"
+                id="slot4"
+              >
                 <h5 class="pt-2" id="h5Slot4">12/31/2024</h5>
-                <img src="" id="imgSlot4">
+                <img src="" id="imgSlot4" />
                 <p id="p1Slot4">Temp:</p>
                 <p id="p2Slot4">Wind:</p>
                 <p id="p3Slot4">Humidity:</p>
               </div>
-              <div class="col-11.5 col-md-4 col-xl my-3 ml-1 mr-3 border rounded" id="slot5">
-                <h5 class=" pt-2" id="h5Slot5">1/1/25</h5>
-                <img src="" id="imgSlot5">
+              <div
+                class="col m-1 border rounded"
+                id="slot5"
+              >
+                <h5 class="pt-2" id="h5Slot5">1/1/25</h5>
+                <img src="" id="imgSlot5" />
                 <p id="p1Slot5">Temp:</p>
                 <p id="p2Slot5">Wind:</p>
                 <p id="p3Slot5">Humidity:</p>
@@ -139,6 +155,13 @@
       </div>
     </main>
   </body>
+
+  <div id="city-dialog" title="Oops!" class="ui-helper-hidden-accessible">
+    <p>City not found.</p>
+  </div>
+  <div id="forecast-dialog" title="Oops!" class="ui-helper-hidden-accessible">
+    <p>Forecast info not found.</p>
+  </div>
 
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
@@ -164,5 +187,6 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   ></script>
+  <script src="./assets/js/cities.js"></script>
   <script src="./assets/js/index.js"></script>
 </html>
