@@ -11,7 +11,7 @@ function updateCurrent(currentData) {
   var cityName = currentData.name;
   var iconUrl = "https://openweathermap.org/img/wn/";
   var icon = currentData.weather[0].icon;
-
+  
   curCityEl = $("#current-city-name");
   curCityEl.text(`${cityName} (${curDate})`);
 
@@ -19,10 +19,67 @@ function updateCurrent(currentData) {
   iconUrl += `${icon}@2x.png`;
   imageEl.attr("src", iconUrl);
 
+  setBgGradient(icon);
+
   curCityEl.append(imageEl);
   $("#current-temp").text(`Temp: ${curTemp}°`);
   $("#current-wind").text(`Wind: ${curWind} mph`);
   $("#current-humidity").text(`Humidity: ${curHumidity}%`);
+}
+
+function setBgGradient(icon) {
+  bodyEl = $("body");
+  headerEl = $("h3");
+
+  switch(icon) {
+    case "01d": //clear sky - day
+      bodyEl.css("background-image", "linear-gradient(blue, lightblue)");
+      break;
+    case "01n": //clear sky - night
+      bodyEl.css("background-image", "linear-gradient(midnightblue, indigo)");
+      headerEl.addClass("text-white");
+      break;
+    case "02d": //few clouds - day
+      bodyEl.css("background-image", "linear-gradient(royalblue, lightgrey)");
+      break;
+    case "02n": //few clouds - night
+      bodyEl.css("background-image", "linear-gradient(midnightblue, darkgrey)");
+      headerEl.addClass("text-white");
+      break;
+    case "03d": //scattered clouds - day
+    case "50d": //mist - day
+      bodyEl.css("background-image", "linear-gradient(darkgrey, lightblue)");
+      break;
+    case "03n": //scattered clouds - night
+    case "50n": //mist - night
+    case "13n": //snow - night
+      bodyEl.css("background-image", "linear-gradient(dimgrey, midnightblue)");
+      headerEl.addClass("text-white");
+      break;
+    case "04d": //broken clouds - day
+      bodyEl.css("background-image", "linear-gradient(darkgrey, lightgrey)");
+      break;
+    case "04n": //broken clouds - night
+      bodyEl.css("background-image", "linear-gradient(dimgrey, darkgrey)");
+      headerEl.addClass("text-white");
+      break;
+    case "09d": //shower rain - day
+    case "10d": //rain - day
+    case "11d": //thunderstorm - day
+      bodyEl.css("background-image", "linear-gradient(dimgrey, darkgrey)");
+      break;
+    case "09n": //shower rain - night
+    case "10n": //rain - night
+    case "11n": //thunderstorm - night
+      bodyEl.css("background-image", "linear-gradient(dimgrey, black)");
+      headerEl.addClass("text-white");
+      break;
+    case "13d": //snow - day
+      bodyEl.css("background-image", "linear-gradient(lightgrey, white)");
+      break;
+    default:
+      bodyEl.css("background-image", "linear-gradient(blue, lightblue)");
+    }
 }
 
 function ifLess(oldVal, newVal) {
@@ -191,6 +248,7 @@ function handleBtns(event) {
   var cityName = element.attr("data-city");
   getCurrentApi(cityName, false);
 }
+
 
 function init() {
   var cityName;
