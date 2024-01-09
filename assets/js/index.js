@@ -214,7 +214,7 @@ used for the API fetch of the 5 day forecast data (since city cannot be used for
 function getForecastApi(currentData) {
   var long = currentData.coord.lon;
   var lat = currentData.coord.lat;
-  var forecastApi = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=imperial&appid=${apiKey}`;
+  var forecastApi = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=imperial&appid=${apiKey}`;
 
   // function call to update the current weather conditions
   updateCurrent(currentData);
@@ -285,7 +285,7 @@ function getCurrentApi(cityName, addToSearch) {
 
   // replace spaces to set up for URL
   cityProperty = cityName.replace(" ", "+");
-  currentApi = `http://api.openweathermap.org/data/2.5/weather?q=${cityProperty}&units=imperial&appid=${apiKey}`;
+  currentApi = `https://api.openweathermap.org/data/2.5/weather?q=${cityProperty}&units=imperial&appid=${apiKey}`;
 
   fetch(currentApi)
     .then(function (response) {
