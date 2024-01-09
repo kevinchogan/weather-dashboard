@@ -1,4 +1,4 @@
-const DEFAULT_CITY = "Redwood City"
+const DEFAULT_CITY = "Redwood City";
 var apiKey = "d3a388cc2e0c9271a4d6036eef79b90b";
 var searchButton = $("#city-name-btn");
 var searchHistory;
@@ -152,7 +152,7 @@ function addToCitySearch(cityName) {
       searchHistory.pop();
     }
     makeCityButtons();
-    localStorage.setItem("searchHistory",JSON.stringify(searchHistory));
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
   }
 }
 
