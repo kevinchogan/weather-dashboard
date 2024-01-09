@@ -69,7 +69,7 @@ function updateForecast(forecastData) {
       if (slotId > 0) {
         $("#h5Slot" + slotId).text(`${curDate}`);
         $("#p1Slot" + slotId).text(`Temp: ${lowTemp}° to ${highTemp}°`);
-        $("#p2Slot" + slotId).text(`Wind: ${lowWind} mph to ${highWind} mph`);
+        $("#p2Slot" + slotId).text(`Wind: ${lowWind} to ${highWind} mph`);
         $("#p3Slot" + slotId).text(
           `Humidity: ${lowHumidity}% to ${highHumidity}%`
         );
