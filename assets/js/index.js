@@ -46,51 +46,58 @@ function setBgGradient(icon) {
   switch (icon) {
     case "01d": //clear sky - day
       bodyEl.css("background-image", "linear-gradient(blue, lightblue)");
+      headerEl.attr("class","mt-4 text-white");
       break;
     case "01n": //clear sky - night
       bodyEl.css("background-image", "linear-gradient(midnightblue, indigo)");
-      headerEl.addClass("text-white");
+      headerEl.attr("class","mt-4 text-white");
       break;
     case "02d": //few clouds - day
       bodyEl.css("background-image", "linear-gradient(royalblue, lightgrey)");
+      headerEl.attr("class","mt-4 text-dark");
       break;
     case "02n": //few clouds - night
       bodyEl.css("background-image", "linear-gradient(midnightblue, darkgrey)");
-      headerEl.addClass("text-white");
+      headerEl.attr("class","mt-4 text-white");
       break;
     case "03d": //scattered clouds - day
     case "50d": //mist - day
       bodyEl.css("background-image", "linear-gradient(darkgrey, lightblue)");
+      headerEl.attr("class","mt-4 text-dark");
       break;
     case "03n": //scattered clouds - night
     case "50n": //mist - night
     case "13n": //snow - night
       bodyEl.css("background-image", "linear-gradient(dimgrey, midnightblue)");
-      headerEl.addClass("text-white");
+      headerEl.attr("class","mt-4 text-white");
       break;
     case "04d": //broken clouds - day
       bodyEl.css("background-image", "linear-gradient(darkgrey, lightgrey)");
+      headerEl.attr("class","mt-4 text-dark");
       break;
     case "04n": //broken clouds - night
       bodyEl.css("background-image", "linear-gradient(dimgrey, darkgrey)");
-      headerEl.addClass("text-white");
+      headerEl.attr("class","mt-4 text-white");
       break;
     case "09d": //shower rain - day
     case "10d": //rain - day
     case "11d": //thunderstorm - day
       bodyEl.css("background-image", "linear-gradient(dimgrey, darkgrey)");
+      headerEl.attr("class","mt-4 text-white");
       break;
     case "09n": //shower rain - night
     case "10n": //rain - night
     case "11n": //thunderstorm - night
       bodyEl.css("background-image", "linear-gradient(dimgrey, black)");
-      headerEl.addClass("text-white");
+      headerEl.attr("class","mt-4 text-white");
       break;
     case "13d": //snow - day
       bodyEl.css("background-image", "linear-gradient(lightgrey, white)");
+      headerEl.attr("class","mt-4 text-dark");
       break;
     default:
       bodyEl.css("background-image", "linear-gradient(blue, lightblue)");
+      headerEl.attr("class","mt-4 text-dark");
   }
 }
 

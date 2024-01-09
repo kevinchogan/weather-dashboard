@@ -10,7 +10,7 @@ html, body {
 img {
     filter: brightness(120%);
     filter: contrast(120%);
-    filter: drop-shadow(5px 5px 5px grey);    
+    filter: drop-shadow(3px 3px 3px grey);    
 }
 
 .custom-block {
@@ -19,4 +19,8 @@ img {
 
 .custom-bg {
     background-color: rgb(233, 235, 244);
+}
+
+.five-day {
+    min-height: 250px;
 }
