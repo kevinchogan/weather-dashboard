@@ -7,7 +7,7 @@ var searchHistory;
 Updates the html with the current weather data
 === updateCurrent ===*/
 function updateCurrent(currentData) {
-  var curDate = moment().format("M/D/YYYY");
+  var curDate = moment().format("ddd M/D/YYYY");
   var curTemp = Math.round(currentData.main.temp);
   var curWind = Math.round(currentData.wind.speed);
   var curHumidity = currentData.main.humidity;
@@ -131,7 +131,7 @@ and humidity).
 === updateForecast ===*/
 function updateForecast(forecastData) {
   var curDate = moment().format("M/D/YY");
-  var slotId = 0; //visible slot ids go from 1 to 5
+  var slotId = 1;
   var lowTemp;
   var highTemp;
   var lowWind;
@@ -140,6 +140,7 @@ function updateForecast(forecastData) {
   var highHumidity;
   var icon;
   var curTime;
+  var dateLabel;
 
   for (let i = 0; i < forecastData.list.length; i++) {
     // if the array instance date is new, updates the html text with
@@ -148,21 +149,26 @@ function updateForecast(forecastData) {
       moment(forecastData.list[i].dt, "X").format("M/D/YY") !== curDate ||
       i === forecastData.list.length - 1
     ) {
-      // slot 0 is assumed to include current day's data, which is ignored
-      // otherwise html text is updated with the day's weather data
-      if (slotId > 0) {
-        $("#h5Slot" + slotId).text(`${curDate}`);
-        $("#p1Slot" + slotId).text(`Temp: ${lowTemp}° to ${highTemp}°`);
-        $("#p2Slot" + slotId).text(`Wind: ${lowWind} to ${highWind} mph`);
-        $("#p3Slot" + slotId).text(
-          `Humidity: ${lowHumidity}% to ${highHumidity}%`
+      // html text is updated with the day's weather data
+      dateLabel = moment(curDate, "M/D/YY").format("ddd M/D/YY")
+      // headers says 'Today' in the first slot, othewrise shows date
+      if (slotId === 1) {
+        $("#h5Slot" + slotId).text('Today');
+      } else {
+        $("#h5Slot" + slotId).text(`${dateLabel}`);
+      }
+      // update weather data text
+      $("#p1Slot" + slotId).text(`Temp: ${lowTemp}° to ${highTemp}°`);
+      $("#p2Slot" + slotId).text(`Wind: ${lowWind} to ${highWind} mph`);
+      $("#p3Slot" + slotId).text(
+        `Humidity: ${lowHumidity}% to ${highHumidity}%`
+      );
+      // set up icon image element
+      if (!!icon) {
+        $("#imgSlot" + slotId).attr(
+          "src",
+          `https://openweathermap.org/img/wn/${icon}.png`
         );
-        if (!!icon) {
-          $("#imgSlot" + slotId).attr(
-            "src",
-            `https://openweathermap.org/img/wn/${icon}.png`
-          );
-        }
       }
       // resets the weather data for new day's comparisons
       lowTemp = forecastData.list[i].main.temp;
