@@ -7,6 +7,16 @@ html, body {
     font-size: 100%;
 }
 
+img {
+    filter: brightness(120%);
+    filter: contrast(120%);
+    filter: drop-shadow(5px 5px 5px grey);    
+}
+
 .custom-block {
     border-bottom: 1px solid lightgrey;
+}
+
+.custom-bg {
+    background-color: rgb(233, 235, 244);
 }
