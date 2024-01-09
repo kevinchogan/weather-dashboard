@@ -1,5 +1,7 @@
+const DEFAULT_CITY = "Redwood City"
 var apiKey = "d3a388cc2e0c9271a4d6036eef79b90b";
 var searchButton = $("#city-name-btn");
+var searchHistory;
 
 function updateCurrent(currentData) {
   var curDate = moment().format("M/D/YYYY");
@@ -9,8 +11,6 @@ function updateCurrent(currentData) {
   var cityName = currentData.name;
   var iconUrl = "https://openweathermap.org/img/wn/";
   var icon = currentData.weather[0].icon;
-
-  console.log(currentData);
 
   curCityEl = $("#current-city-name");
   curCityEl.text(`${cityName} (${curDate})`);
@@ -50,7 +50,6 @@ function ifMore(oldVal, newVal) {
 }
 
 function updateForecast(forecastData) {
-  console.log(forecastData);
   var curDate = moment().format("M/D/YY");
   var slotId = 0;
   var lowTemp = "";
@@ -110,9 +109,6 @@ function updateForecast(forecastData) {
       ) {
         icon = forecastData.list[i].weather[0].icon;
       }
-      console.log(
-        `curDate: ${curDate}  i: ${i}  curTime: ${curTime} icon: ${icon}`
-      );
     }
   }
 }
@@ -124,7 +120,7 @@ function getForecastApi(currentData) {
   var forecastApi = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=imperial&appid=${apiKey}`;
   fetch(forecastApi)
     .then(function (response) {
-      if (response.status === 404) {
+      if (!response.ok) {
         $("#forecast-dialog").dialog();
       }
       return response.json();
@@ -132,25 +128,84 @@ function getForecastApi(currentData) {
     .then(updateForecast);
 }
 
-function getApi() {
-  var cityName = $("#city-name").val();
+function makeCityButtons() {
+  var buttonEl;
+  var searchHistoryBtnsEl = $("#search-history-buttons");
+  searchHistoryBtnsEl.empty();
+
+  for (let i = 0; i < searchHistory.length; i++) {
+    buttonEl = $("<button>");
+    buttonEl.attr("href", "#");
+    buttonEl.attr("class", "btn btn-secondary btn-block");
+    buttonEl.attr("id", "btn" + i + 1);
+    buttonEl.attr("data-city", searchHistory[i]);
+    buttonEl.text(searchHistory[i]);
+    searchHistoryBtnsEl.append(buttonEl);
+    buttonEl.on("click", handleBtns);
+  }
+}
+
+function addToCitySearch(cityName) {
+  if (!searchHistory.includes(cityName)) {
+    searchHistory.unshift(cityName);
+    if (searchHistory.length > 5) {
+      searchHistory.pop();
+    }
+    makeCityButtons();
+    localStorage.setItem("searchHistory",JSON.stringify(searchHistory));
+  }
+}
+
+function getCurrentApi(cityName, addToSearch) {
+  var cityProperty;
+  var currentApi;
+
   if (!cityName) {
-    cityName = "Redwood City";
+    cityName = DEFAULT_CITY;
   }
 
-  var cityProperty = cityName.replace(" ", "+");
-  var currentApi = `http://api.openweathermap.org/data/2.5/weather?q=${cityProperty}&units=imperial&appid=${apiKey}`;
+  cityProperty = cityName.replace(" ", "+");
+  currentApi = `http://api.openweathermap.org/data/2.5/weather?q=${cityProperty}&units=imperial&appid=${apiKey}`;
 
   fetch(currentApi)
     .then(function (response) {
-      if (response.status === 404) {
+      if (!response.ok) {
         $("#city-dialog").dialog();
+      } else {
+        if (addToSearch) {
+          addToCitySearch(cityName);
+        }
       }
       return response.json();
     })
     .then(getForecastApi);
 }
 
-setAutoComplete();
-getApi();
-searchButton.on("click", getApi);
+function handleSearch() {
+  var cityName = $("#city-name").val();
+  getCurrentApi(cityName, true);
+}
+
+function handleBtns(event) {
+  var element = $(event.target);
+  var cityName = element.attr("data-city");
+  getCurrentApi(cityName, false);
+}
+
+function init() {
+  var cityName;
+
+  setAutoComplete();
+  searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
+  if (!searchHistory) {
+    cityName = DEFAULT_CITY;
+    searchHistory = [];
+  } else {
+    cityName = searchHistory[0];
+  }
+  makeCityButtons();
+  getCurrentApi(cityName, false);
+}
+
+init();
+searchButton.on("click", handleSearch);
