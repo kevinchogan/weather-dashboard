@@ -210,6 +210,10 @@ function updateForecast(forecastData) {
       ) {
         icon = forecastData.list[i].weather[0].icon;
       }
+      // if on day 1 there is no icon, uses the first icon it finds for that day
+      if (!icon) {
+        icon = forecastData.list[i].weather[0].icon
+      }
     }
   }
 }
