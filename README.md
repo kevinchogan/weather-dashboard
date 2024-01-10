@@ -18,7 +18,7 @@ N/A
 - Once you press the search button, if a city is found, the web site will show the current weather and the 5-day forecast for that city
 - For each city you are presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the wind speed
 - For each city you are presented a five-day forecast that includes the date, an icon representation of weather conditions, and ranges for the temperature, wind speed, and humidity.
-- Cities buttons are added below the search for each city that you look up (to a max of 5)
+- Cities buttons are added below the search for each city that you look up (to a max of 10)
 - When clicking on those buttons, the web site updates to the weather conditions for that city.
 
 ## Credits

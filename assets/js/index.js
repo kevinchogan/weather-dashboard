@@ -272,7 +272,7 @@ array is greater than 5, the last item is removed.
 function addToCitySearch(cityName) {
   if (!searchHistory.includes(cityName)) {
     searchHistory.unshift(cityName);
-    if (searchHistory.length > 5) {
+    if (searchHistory.length > 10) {
       searchHistory.pop();
     }
     makeCityButtons();
