@@ -139,13 +139,13 @@ and humidity).
 function updateForecast(forecastData) {
   var curDate = moment().format("M/D/YY");
   var slotId = 1;
-  var lowTemp;
-  var highTemp;
-  var lowWind;
-  var highWind;
-  var lowHumidity;
-  var highHumidity;
-  var icon;
+  var lowTemp = forecastData.list[0].main.temp;
+  var highTemp = forecastData.list[0].main.temp;
+  var lowWind = forecastData.list[0].wind.speed;
+  var highWind = forecastData.list[0].wind.speed;
+  var lowHumidity = forecastData.list[0].main.humidity;
+  var highHumidity = forecastData.list[0].main.humidity;
+  var icon = forecastData.list[0].weather[0].icon;
   var curTime;
   var dateLabel;
 
@@ -158,7 +158,7 @@ function updateForecast(forecastData) {
     ) {
       // html text is updated with the day's weather data
       dateLabel = moment(curDate, "M/D/YY").format("ddd M/D/YY")
-      // headers says 'Today' in the first slot, othewrise shows date
+      // headers says 'Today' in the first slot, otherwise shows date
       if (slotId === 1) {
         $("#h5Slot" + slotId).text('Today');
       } else {
